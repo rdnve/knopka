@@ -1,0 +1,62 @@
+[tool.poetry]
+name = "knopka"
+version = "0.0.1"
+description = "another api client for online accounting knopka.com"
+authors = ["serje ù <pleaseanswermeserjeu@icloud.com>"]
+license = "MIT"
+readme = "README.md"
+keywords = ["finance", "accounting"]
+repository = "https://github.com/rdnve/knopka"
+packages = [{include = "knopka"}]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Internet :: WWW/HTTP",
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = {extras = ["socks"], version = "~2.32"}
+attrs = "~23.2"
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.12.0"
+mypy = "^1.8.0"
+isort = "^5.13.2"
+types-lxml = "^2023.10.21"
+types-requests = "^2.31.0.20231231"
+pytest = "^7.4.4"
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 88
+skip_glob = "*/.serverless/*"
+filter_files = true
+
+[tool.black]
+target-version = ['py312']
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.mypy_cache
+    | \.pytest_cache
+    | \.venv
+    | \.serverless
+    | build
+  )/
+)
+'''
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
